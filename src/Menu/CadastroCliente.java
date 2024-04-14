@@ -2,6 +2,8 @@ package Menu;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class CadastroCliente extends JFrame{
     private JTextField textFieldNome;
@@ -10,65 +12,19 @@ public class CadastroCliente extends JFrame{
     private JPanel panelCadastroCliente;
     private JTextField textFieldEndeco;
     private JButton buttonSalvar;
-
-    public CadastroCliente(JTextField textFieldNome, JTextField textFieldSobreNome, JTextField textFieldTelefone, JPanel panelCadastroCliente, JTextField textFieldEndeco) throws HeadlessException {
-        this.textFieldNome = textFieldNome;
-        this.textFieldSobreNome = textFieldSobreNome;
-        this.textFieldTelefone = textFieldTelefone;
-        this.panelCadastroCliente = panelCadastroCliente;
-        this.textFieldEndeco = textFieldEndeco;
-    }
+    private JButton menuPricipal;
 
 
-    public JTextField getTextFieldNome() {
-        return textFieldNome;
-    }
-
-    public void setTextFieldNome(JTextField textFieldNome) {
-        this.textFieldNome = textFieldNome;
-    }
-
-    public JTextField getTextFieldSobreNome() {
-        return textFieldSobreNome;
-    }
-
-    public void setTextFieldSobreNome(JTextField textFieldSobreNome) {
-        this.textFieldSobreNome = textFieldSobreNome;
-    }
-
-    public JTextField getTextFieldTelefone() {
-        return textFieldTelefone;
-    }
-
-    public void setTextFieldTelefone(JTextField textFieldTelefone) {
-        this.textFieldTelefone = textFieldTelefone;
-    }
-
-    public JPanel getPanelCadastroCliente() {
-        return panelCadastroCliente;
-    }
-
-    public void setPanelCadastroCliente(JPanel panelCadastroCliente) {
-        this.panelCadastroCliente = panelCadastroCliente;
-    }
-
-    public JTextField getTextFieldEndeco() {
-        return textFieldEndeco;
-    }
-
-    public void setTextFieldEndeco(JTextField textFieldEndeco) {
-        this.textFieldEndeco = textFieldEndeco;
-    }
-
-    public JButton getButtonSalvar() {
-        return buttonSalvar;
-    }
-
-    public void setButtonSalvar(JButton buttonSalvar) {
-        this.buttonSalvar = buttonSalvar;
-    }
 
     public CadastroCliente(){
+        menuPricipal.addActionListener(new ActionListener() {//Volta para o menu inicial quando o batão é clicado
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MenuPrincipal menuPrincipal = new MenuPrincipal();
+                menuPrincipal.setVisible(true);
+                dispose();
+            }
+        }) ;
 
         JPanel panelcadastroCliente = new JPanel();
 
@@ -79,8 +35,15 @@ public class CadastroCliente extends JFrame{
 
 
         // Configurações da janela
+        this.setTitle("Cadastro");
         this.setSize(800, 650);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null); // Centraliza a janela
+
+
+
     }
+
+
+
 }
